@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+platform :ios, '11.0'
+
+target 'TestHotRoload' do
+
+pod 'GCDWebServer/WebUploader', '~> 3.0'    # 本地server
+pod 'Masonry'
+pod 'HotRoload', :path => '.'
+end

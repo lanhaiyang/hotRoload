@@ -1,0 +1,33 @@
+{
+  "name": "HotRoload",
+  "version": "0.1.0",
+  "summary": "A short description of HotRoload.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/aliyunvideo/HotRoload",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "sky": ""
+  },
+  "source": {
+    "git": "",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "resources": "TestHotRoload/Resource/*",
+  "dependencies": {
+    "GCDWebServer/WebUploader": [
+      "~> 3.0"
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Classess",
+      "source_files": "TestHotRoload/Classess/**/*"
+    }
+  ]
+}

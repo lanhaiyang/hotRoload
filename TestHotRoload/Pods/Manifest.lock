@@ -1,0 +1,33 @@
+PODS:
+  - GCDWebServer/Core (3.5.4)
+  - GCDWebServer/WebUploader (3.5.4):
+    - GCDWebServer/Core
+  - HotRoload (0.1.0):
+    - GCDWebServer/WebUploader (~> 3.0)
+    - HotRoload/Classess (= 0.1.0)
+  - HotRoload/Classess (0.1.0):
+    - GCDWebServer/WebUploader (~> 3.0)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - GCDWebServer/WebUploader (~> 3.0)
+  - HotRoload (from `.`)
+  - Masonry
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - GCDWebServer
+    - Masonry
+
+EXTERNAL SOURCES:
+  HotRoload:
+    :path: "."
+
+SPEC CHECKSUMS:
+  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
+  HotRoload: b1387dea2d114f4dc3837419fe8fdab20872a1af
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: f9a7e9b18e256cccb5bdde3107f4a63f2846e321
+
+COCOAPODS: 1.14.3
