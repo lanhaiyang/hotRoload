@@ -169,7 +169,7 @@ void fsevents_callback(ConstFSEventStreamRef streamRef,
 
 
 -(void)updateSearch{
-    NSArray *list = [_file searchFiles:_projectPath fileType:@[@"h"]];
+    NSArray *list = [_file searchFiles:_projectPath fileType:@[@"h"] isNeedFileName:NO];
     NSString *linkPaht = @"";
     for(NSString *path in list){
         if([path containsString:@" "]){

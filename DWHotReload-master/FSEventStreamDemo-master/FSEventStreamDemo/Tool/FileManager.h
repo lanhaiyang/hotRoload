@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FileManager : NSObject
 
 
--(NSArray<NSString *> *)searchFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType;
+-(NSArray<NSString *> *)searchFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType isNeedFileName:(BOOL)isNeedFileName;
 
 - (NSString *)writeToTXTFileWithString:(NSString *)string fileName:(NSString *)fileName;
 

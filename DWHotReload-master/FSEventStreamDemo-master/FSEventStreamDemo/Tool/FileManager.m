@@ -24,7 +24,9 @@
     return self;
 }
 
-- (void)showFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType{
+
+
+- (void)showFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType isNeedFileName:(BOOL)isNeedFileName{
 
     // 1.判断文件还是目录
 
@@ -42,12 +44,16 @@
                     
                     BOOL issubDir = NO;
                      [fileManger fileExistsAtPath:subPath isDirectory:&issubDir];
-                    [self addArrayWithPath:path];
+                    if(isNeedFileName == YES){
+                        [self addArrayWithPath:subPath];
+                    }else{
+                        [self addArrayWithPath:path];
+                    }
                 }
-                [self showFiles:subPath fileType:fileType];
+                [self showFiles:subPath fileType:fileType isNeedFileName:isNeedFileName];
             }
         }else{
-            NSLog(@"%@",path);
+//            NSLog(@"%@",path);
         }
 
     }else{
@@ -99,7 +105,11 @@
     }
     
     if(![manager fileExistsAtPath:theFilePath]){
-        [@"" writeToFile:theFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        NSString *bitPath = [NSString stringWithFormat:@"%@/archiveFile"];
+        NSArray *list = [[FileManager new] searchFiles:bitPath fileType:@[@"o"] isNeedFileName:YES];
+        NSString *content = [list componentsJoinedByString:@"\n"];
+        content = [NSString stringWithFormat:@"%@\n",content];
+        [content writeToFile:theFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }
 }
 
@@ -107,7 +117,8 @@
 
 +(NSString *)getForPath{
     NSArray *paths  = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    return [paths objectAtIndex:0];
+    NSString *path = [NSString stringWithFormat:@"%@/HotUpdate",[paths objectAtIndex:0]];
+    return path;
 }
 
 - (NSString *)writeToTXTFileWithString:(NSString *)string fileName:(NSString *)fileName {
@@ -198,10 +209,10 @@
 }
 
 
--(NSArray<NSString *> *)searchFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType{
+-(NSArray<NSString *> *)searchFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType isNeedFileName:(BOOL)isNeedFileName{
     
     [_pathListMs removeAllObjects];
-    [self showFiles:path fileType:fileType];
+    [self showFiles:path fileType:fileType isNeedFileName:isNeedFileName];
     return _pathListMs.copy;
 }
 

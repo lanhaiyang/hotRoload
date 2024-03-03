@@ -24,12 +24,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+//#if DEBUG
+//[[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
+//// [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle"] load];
+//// [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle"] load];
+//#endif
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     self.mainVC = [[DWViewController alloc] init];
-    self.window.rootViewController = self.mainVC;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.mainVC];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     return YES;

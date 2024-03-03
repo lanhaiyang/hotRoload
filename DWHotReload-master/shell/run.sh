@@ -33,7 +33,7 @@ linkTarget="arm64-apple-ios11.0-simulator"
 linkIsysroot="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 
 #objectCahcePath="/Users/dingwei/Library/Developer/Xcode/DerivedData/DWDebugHR-fahgfhvqgkwjbgdxifevhwtdnpmp/Build/Intermediates.noindex/DWDebugHR.build/Debug-iphonesimulator/DWDebugHR.build/DWDebugHR-project-headers.hmap"
-objectCahcePath="/Users/lanhaiyang/Library/Developer/Xcode/DerivedData/TestHotRoload-edneskslwtlxvtbmwtbmilpdpiwn/Build/Intermediates.noindex/TestHotRoload.build/Debug-iphonesimulator/TestHotRoload.build/TestHotRoload-all-target-headers.hmap"
+#objectCahcePath="/Users/lanhaiyang/Library/Developer/Xcode/DerivedData/TestHotRoload-edneskslwtlxvtbmwtbmilpdpiwn/Build/Intermediates.noindex/TestHotRoload.build/Debug-iphonesimulator/TestHotRoload.build/TestHotRoload-all-target-headers.hmap"
 
 
 ##判断是否是真机
@@ -63,7 +63,7 @@ fi
 
 #echo "clang -x objective-c -target ${linkTarget} -fobjc-arc -fmodules  -isysroot ${linkIsysroot} -iquote ${objectCahcePath} ${freshLinkPath} -c "${filePath}" -o ${tempFilePath}/${fileName}.o"
 
-echo "clang -x objective-c -target ${linkTarget} -fobjc-arc -fmodules -isysroot ${linkIsysroot} -iquote ${objectCahcePath} ${freshLinkPath} -c ${filePath} -o ${tempFilePath}/${fileName}.o"
+echo "clang -x objective-c -target ${linkTarget} -fobjc-arc -fmodules -isysroot ${linkIsysroot} -iquote  ${freshLinkPath} -c ${filePath} -o ${tempFilePath}/${fileName}.o"
 
 freshLinkPath="$(less $importHeadPath)"
 
@@ -75,7 +75,7 @@ command || { echo "command failed"; exit 1; }
 
 #clang -x objective-c -target ${linkTarget} -fobjc-arc -fmodules  -isysroot ${linkIsysroot} -iquote ${objectCahcePath} ${freshLinkPath} -c ${filePath} -o ${tempFilePath}/${fileName}.o
 
-clang -x objective-c -target ${linkTarget} -fobjc-arc -fmodules -isysroot ${linkIsysroot} -iquote ${objectCahcePath} ${freshLinkPath} -c "${filePath}" -o ${tempFilePath}/${fileName}.o
+clang -x objective-c -target ${linkTarget} -fobjc-arc -fmodules -isysroot ${linkIsysroot} -iquote  ${freshLinkPath} -c "${filePath}" -o ${tempFilePath}/${fileName}.o
 
 
 command || { echo "command failed"; exit 1; }
@@ -95,10 +95,18 @@ EOF
 # 文件存在 先删除
 else
 echo "文件存在";
-rm -f $dirAndName
-cat>$dirAndName<<EOF
-${tempFilePath}/${fileName}.o
-EOF
+#rm -f $dirAndName
+#cat>$dirAndName<<EOF
+#${tempFilePath}/${fileName}.o
+#EOF
+#result=$("$(less $dirAndName)" | grep "${fileName}.o")
+if [[ "$(less $dirAndName)" =~ "${tempFilePath}/${fileName}.o" ]]
+then
+    echo "包含"
+else
+    echo "不包含"
+    echo "${tempFilePath}/${fileName}.o" >> $dirAndName
+fi
 fi
 fi
 
@@ -109,6 +117,7 @@ echo "\n==========3==========\n"
 echo "clang -x objective-c -target ${linkTarget} -dynamiclib -isysroot ${linkIsysroot} -filelist $dirAndName   -Xlinker -objc_abi_version -Xlinker 2 -fobjc-link-runtime -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements  -Xlinker ${tempFilePath}/${fileName}.o -o ${dylibFilePath}/dw${ctime}.dylib"
 echo "\n====================\n"
 
+# dylib 需要把vc上面关联的文件都要编译.o 在打包到dylib
 clang -x objective-c -target ${linkTarget} -dynamiclib -isysroot ${linkIsysroot} -filelist $dirAndName -Xlinker -objc_abi_version -Xlinker 2 -fobjc-link-runtime -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements  -Xlinker ${tempFilePath}/${fileName}.o -o ${dylibFilePath}/dw${ctime}.dylib
 
 command || { echo "command failed"; exit 1; }

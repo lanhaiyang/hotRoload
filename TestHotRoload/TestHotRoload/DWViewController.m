@@ -8,7 +8,11 @@
 #import "DWViewController.h"
 #import "UIView+Extension.h"
 #import <Masonry/Masonry.h>
+//#import "MonitorFileChangeHelp.h"
+#import "QWRStateTitleView.h"
+//#import "TestView.h"
 #define SPACING  16.0
+
 
 @interface DWViewController ()
 
@@ -38,39 +42,141 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"xx2");
-//    [self.view addSubview:self.demoLabel];
-//    [self.view addSubview:self.contentView];
-//    [self.contentView addSubview:self.iconImageView];
-//    [self.contentView addSubview:self.titleLabel];
-//    [self.contentView addSubview:self.descLabel];
-//
-//    self.name = [[UILabel alloc] init];
-//    self.name.frame = CGRectMake(CGRectGetMinX(self.titleLabel.frame), CGRectGetMaxY(self.descLabel.frame) + 5, self.contentView.width * 0.6, 20);
-//    self.name.font = [UIFont systemFontOfSize:14];
-//    self.name.textColor = [UIColor blackColor];
-//    self.contentView.backgroundColor = [UIColor redColor];
-//    [self.contentView addSubview:self.name];
-//    NSLog(@"xx3");
-//    self.descLabel.text      = @"1234344何鹏天龙教天龙八部之夜叉，身着红衣的艳美女子。常化名姬无双。擅长轻功，邪气逼人，龙王麾下的第一战将。后与东方未明在森林相遇，随后经历洛阳河洛大侠江天雄宴会，天意城事件，最终在地宫彼此互诉情谊，在天王线结局，与东方未明西域隐居成为一对神仙眷侣123";
     
+    UIView *head = [[UIView alloc] init];
+    head.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:head];
+    [head mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.top.right.equalTo(self.view);
+        make.height.equalTo(@(64+22));
+    }];
     
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = [UIColor redColor];
-    label.text = @"你长大了吗22222123222223";
-//    label.textColor = [UIColor blackColor];
-    [self.view addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).equalTo(@25);
-        make.right.equalTo(self.view).equalTo(@-15);
-        make.top.equalTo(self.view).equalTo(@(80));
+    self.view.backgroundColor = [UIColor blackColor];//
+    
+    UIImageView *avater = [[UIImageView alloc] init];
+    avater.backgroundColor = [UIColor redColor];
+    avater.layer.cornerRadius = 20;
+    avater.layer.masksToBounds = YES;
+    [self.view addSubview:avater];
+    [avater mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.view).equalTo(@(64+22+13));//
+        make.width.height.equalTo(@(40));
+    }];
+    
+    UILabel *title = [[UILabel alloc] init];
+//    title. M 24
+    title.textColor = [UIColor whiteColor];
+    title.textAlignment = NSTextAlignmentCenter;
+    title.text = @"奶茶妹 送你的礼物";
+    [self.view addSubview:title];
+    [title mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(self.view).equalTo(@(15));//
+        make.right.equalTo(self.view).equalTo(@(-15));//
+        make.top.equalTo(avater.mas_bottom).equalTo(@8);
     }];
     
     
+    UILabel *price = [[UILabel alloc] init];
+    NSLog(@"%f",price.x);
+//    title. R 14
+    price.textColor = [UIColor whiteColor];
+    price.font = [UIFont systemFontOfSize:24];
+    price.textAlignment = NSTextAlignmentCenter;
+    price.text = @"+28.12";
+    [self.view addSubview:price];
+    [price mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(self.view).equalTo(@(15));//
+        make.right.equalTo(self.view).equalTo(@(-15));//
+        make.top.equalTo(title.mas_bottom).equalTo(@8);
+    }];
+    
+    
+    UIView *line = [[UIView alloc] init];
+    line.backgroundColor = [UIColor whiteColor];//#3A3B3E
+    [self.view addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.top.equalTo(price.mas_bottom).equalTo(@40);
+        make.height.equalTo(@0.5);
+    }];
+    
+//    UIView *stateView = [[UIView alloc] init];
+//    stateView.backgroundColor =[UIColor redColor];
+//    [self.view addSubview:stateView];
+//    [stateView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.view).equalTo(@(15));//
+//        make.right.equalTo(self.view).equalTo(@(-15));//
+//        make.top.equalTo(line.mas_bottom).equalTo(@(15));//
+//        make.height.equalTo(@23);
+//    }];
+//
+//    UILabel *leftTitle = [[UILabel alloc] init];
+////    title. R 12
+//    leftTitle.textColor = [UIColor whiteColor];//#8C8D8E
+//    leftTitle.font = [UIFont systemFontOfSize:12];
+//    leftTitle.textAlignment = NSTextAlignmentRight;
+//    leftTitle.text = @"当前状态";
+//    [stateView addSubview:leftTitle];
+//    [leftTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(stateView);//
+//        make.width.equalTo(@70);//Size
+//        make.top.bottom.equalTo(stateView);
+//    }];
+//
+//
+//    UILabel *rightTitle = [[UILabel alloc] init];
+////    title. R 12
+//    rightTitle.textColor = [UIColor whiteColor];
+//    rightTitle.font = [UIFont systemFontOfSize:12];
+//    rightTitle.textAlignment = NSTextAlignmentLeft;
+//    rightTitle.text = @"已存入零钱";
+//    [stateView addSubview:rightTitle];
+//    [rightTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(leftTitle.mas_right).equalTo(@25);//
+//        make.right.equalTo(stateView);//Size
+//        make.top.bottom.equalTo(stateView);
+//    }];
+//
+    
+    QWRStateTitleView *stateTitle = [[QWRStateTitleView alloc] init];
+    stateTitle.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:stateTitle];
+    [stateTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+
+        make.left.equalTo(self.view).equalTo(@(15));//
+        make.right.equalTo(self.view).equalTo(@(-15));//
+        make.top.equalTo(line.mas_bottom).equalTo(@(15));//
+        make.height.equalTo(@23);
+    }];
+    
+//    TestView *testView = [[TestView alloc] init];
+//    testView.backgroundColor = [UIColor grayColor];
+//    [self.view addSubview:testView];
+//    [testView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.view).equalTo(@(15));//
+//        make.right.equalTo(self.view).equalTo(@(-15));//
+//        make.top.equalTo(stateTitle.mas_bottom).equalTo(@(15));//
+//        make.height.equalTo(@23);
+//    }];
 }
 
 
 #pragma mark - 热重载
+
+- (void)injected {
+    NSLog(@"inject");
+    //修改UI的代码直接写在这里
+}
 
 - (void)DWHotReload {
     [self viewDidLoad];
@@ -134,3 +240,7 @@
 
 
 @end
+
+
+
+

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5D74467BDA7D708A7B75668F /* libPods-TestHotRoload.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D189B5B62544D792C55A54 /* libPods-TestHotRoload.a */; };
-		678510762B7BC51D00754829 /* DWSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678510752B7BC51D00754829 /* DWSwiftViewController.swift */; };
 		67FC48F52B5BA32000C37A22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC48F42B5BA32000C37A22 /* AppDelegate.m */; };
 		67FC48F82B5BA32000C37A22 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC48F72B5BA32000C37A22 /* SceneDelegate.m */; };
 		67FC48FB2B5BA32000C37A22 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC48FA2B5BA32000C37A22 /* ViewController.m */; };
@@ -20,6 +19,7 @@
 		67FC491A2B5BA32100C37A22 /* TestHotRoloadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC49192B5BA32100C37A22 /* TestHotRoloadUITests.m */; };
 		67FC491C2B5BA32100C37A22 /* TestHotRoloadUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC491B2B5BA32100C37A22 /* TestHotRoloadUITestsLaunchTests.m */; };
 		67FC494A2B5BA88400C37A22 /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC49492B5BA88400C37A22 /* DWViewController.m */; };
+		67FDCF0F2B8F763000094816 /* QWRStateTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FDCF0D2B8F6A2600094816 /* QWRStateTitleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 /* Begin PBXFileReference section */
 		0B86681A477585670B93497E /* Pods-TestHotRoload.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestHotRoload.debug.xcconfig"; path = "Target Support Files/Pods-TestHotRoload/Pods-TestHotRoload.debug.xcconfig"; sourceTree = "<group>"; };
 		678510742B7BC51D00754829 /* TestHotRoload-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestHotRoload-Bridging-Header.h"; sourceTree = "<group>"; };
-		678510752B7BC51D00754829 /* DWSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DWSwiftViewController.swift; sourceTree = "<group>"; };
 		67FC48F02B5BA32000C37A22 /* TestHotRoload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHotRoload.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FC48F32B5BA32000C37A22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67FC48F42B5BA32000C37A22 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +61,8 @@
 		67FC491B2B5BA32100C37A22 /* TestHotRoloadUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHotRoloadUITestsLaunchTests.m; sourceTree = "<group>"; };
 		67FC49482B5BA88400C37A22 /* DWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWViewController.h; sourceTree = "<group>"; };
 		67FC49492B5BA88400C37A22 /* DWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWViewController.m; sourceTree = "<group>"; };
+		67FDCF0C2B8F6A2600094816 /* QWRStateTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QWRStateTitleView.h; sourceTree = "<group>"; };
+		67FDCF0D2B8F6A2600094816 /* QWRStateTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QWRStateTitleView.m; sourceTree = "<group>"; };
 		C4D189B5B62544D792C55A54 /* libPods-TestHotRoload.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestHotRoload.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F39AA024DB1CD4A18DF4C8 /* Pods-TestHotRoload.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestHotRoload.release.xcconfig"; path = "Target Support Files/Pods-TestHotRoload/Pods-TestHotRoload.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +132,8 @@
 				67FC48F72B5BA32000C37A22 /* SceneDelegate.m */,
 				67FC49482B5BA88400C37A22 /* DWViewController.h */,
 				67FC49492B5BA88400C37A22 /* DWViewController.m */,
-				678510752B7BC51D00754829 /* DWSwiftViewController.swift */,
+				67FDCF0C2B8F6A2600094816 /* QWRStateTitleView.h */,
+				67FDCF0D2B8F6A2600094816 /* QWRStateTitleView.m */,
 				67FC48F92B5BA32000C37A22 /* ViewController.h */,
 				67FC48FA2B5BA32000C37A22 /* ViewController.m */,
 				67FC48FC2B5BA32000C37A22 /* Main.storyboard */,
@@ -345,9 +347,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				678510762B7BC51D00754829 /* DWSwiftViewController.swift in Sources */,
 				67FC48FB2B5BA32000C37A22 /* ViewController.m in Sources */,
 				67FC48F52B5BA32000C37A22 /* AppDelegate.m in Sources */,
+				67FDCF0F2B8F763000094816 /* QWRStateTitleView.m in Sources */,
 				67FC494A2B5BA88400C37A22 /* DWViewController.m in Sources */,
 				67FC49062B5BA32000C37A22 /* main.m in Sources */,
 				67FC48F82B5BA32000C37A22 /* SceneDelegate.m in Sources */,
@@ -586,7 +588,6 @@
 		67FC49232B5BA32100C37A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -605,7 +606,6 @@
 		67FC49242B5BA32100C37A22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -624,7 +624,6 @@
 		67FC49262B5BA32100C37A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6JXWDA9ABA;
@@ -641,7 +640,6 @@
 		67FC49272B5BA32100C37A22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6JXWDA9ABA;
