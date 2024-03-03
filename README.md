@@ -1,5 +1,10 @@
 ## hotRoload 动态调试UI
 
+- 效果
+![](Source/03.mp4)
+[视频](https://github.com/lanhaiyang/hotRoload/blob/main/Source/03.mp4)
+
+
 - 配置ip
 
 ![](Source/04.png)
@@ -14,9 +19,6 @@
 
 > 点击`开始监控`
 
-- 效果
-![](Source/03.mp4)
-[视频](https://github.com/lanhaiyang/hotRoload/blob/main/Source/03.mp4)
 
 - 真机
 
