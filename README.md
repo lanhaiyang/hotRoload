@@ -16,7 +16,7 @@
 
 - 效果
 ![](Source/03.mp4)
-
+[视频](https://github.com/lanhaiyang/hotRoload/blob/main/Source/03.mp4)
 
 - 真机
 
