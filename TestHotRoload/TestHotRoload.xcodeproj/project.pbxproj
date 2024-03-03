@@ -20,6 +20,7 @@
 		67FC491C2B5BA32100C37A22 /* TestHotRoloadUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC491B2B5BA32100C37A22 /* TestHotRoloadUITestsLaunchTests.m */; };
 		67FC494A2B5BA88400C37A22 /* DWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FC49492B5BA88400C37A22 /* DWViewController.m */; };
 		67FDCF0F2B8F763000094816 /* QWRStateTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FDCF0D2B8F6A2600094816 /* QWRStateTitleView.m */; };
+		67FDCF212B9471C600094816 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FDCF202B9471C600094816 /* TestView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		67FC49492B5BA88400C37A22 /* DWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWViewController.m; sourceTree = "<group>"; };
 		67FDCF0C2B8F6A2600094816 /* QWRStateTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QWRStateTitleView.h; sourceTree = "<group>"; };
 		67FDCF0D2B8F6A2600094816 /* QWRStateTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QWRStateTitleView.m; sourceTree = "<group>"; };
+		67FDCF1F2B9471C600094816 /* TestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
+		67FDCF202B9471C600094816 /* TestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
 		C4D189B5B62544D792C55A54 /* libPods-TestHotRoload.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestHotRoload.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F39AA024DB1CD4A18DF4C8 /* Pods-TestHotRoload.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestHotRoload.release.xcconfig"; path = "Target Support Files/Pods-TestHotRoload/Pods-TestHotRoload.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +137,8 @@
 				67FC49492B5BA88400C37A22 /* DWViewController.m */,
 				67FDCF0C2B8F6A2600094816 /* QWRStateTitleView.h */,
 				67FDCF0D2B8F6A2600094816 /* QWRStateTitleView.m */,
+				67FDCF1F2B9471C600094816 /* TestView.h */,
+				67FDCF202B9471C600094816 /* TestView.m */,
 				67FC48F92B5BA32000C37A22 /* ViewController.h */,
 				67FC48FA2B5BA32000C37A22 /* ViewController.m */,
 				67FC48FC2B5BA32000C37A22 /* Main.storyboard */,
@@ -347,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67FDCF212B9471C600094816 /* TestView.m in Sources */,
 				67FC48FB2B5BA32000C37A22 /* ViewController.m in Sources */,
 				67FC48F52B5BA32000C37A22 /* AppDelegate.m in Sources */,
 				67FDCF0F2B8F763000094816 /* QWRStateTitleView.m in Sources */,

@@ -10,7 +10,7 @@
 #import <Masonry/Masonry.h>
 //#import "MonitorFileChangeHelp.h"
 #import "QWRStateTitleView.h"
-//#import "TestView.h"
+#import "TestView.h"
 #define SPACING  16.0
 
 
@@ -158,16 +158,16 @@
         make.height.equalTo(@23);
     }];
     
-//    TestView *testView = [[TestView alloc] init];
-//    testView.backgroundColor = [UIColor grayColor];
-//    [self.view addSubview:testView];
-//    [testView mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.left.equalTo(self.view).equalTo(@(15));//
-//        make.right.equalTo(self.view).equalTo(@(-15));//
-//        make.top.equalTo(stateTitle.mas_bottom).equalTo(@(15));//
-//        make.height.equalTo(@23);
-//    }];
+    TestView *testView = [[TestView alloc] init];
+    testView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:testView];
+    [testView mas_makeConstraints:^(MASConstraintMaker *make) {
+
+        make.left.equalTo(self.view).equalTo(@(15));//
+        make.right.equalTo(self.view).equalTo(@(-15));//
+        make.top.equalTo(stateTitle.mas_bottom).equalTo(@(15));//
+        make.height.equalTo(@100);
+    }];
 }
 
 
