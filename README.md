@@ -1,6 +1,6 @@
-## hotRoload
+## hotRoload 动态调试UI
 
-- 配置id
+- 配置ip
 
 ![](Source/04.png)
 
