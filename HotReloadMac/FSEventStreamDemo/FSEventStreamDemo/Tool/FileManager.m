@@ -107,9 +107,14 @@
     if(![manager fileExistsAtPath:theFilePath]){
         NSString *bitPath = [NSString stringWithFormat:@"%@/archiveFile"];
         NSArray *list = [[FileManager new] searchFiles:bitPath fileType:@[@"o"] isNeedFileName:YES];
-        NSString *content = [list componentsJoinedByString:@"\n"];
-        content = [NSString stringWithFormat:@"%@\n",content];
-        [content writeToFile:theFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        if(list.count != 0){
+            NSString *content = [list componentsJoinedByString:@"\n"];
+            content = [NSString stringWithFormat:@"%@\n",content];
+            [content writeToFile:theFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        }else{
+            [@"" writeToFile:theFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        }
+        
     }
 }
 
