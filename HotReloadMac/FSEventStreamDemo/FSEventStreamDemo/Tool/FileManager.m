@@ -25,6 +25,32 @@
 }
 
 
+-(NSString *)getForProfileWithBootPath:(NSString *)bootPath searchFileName:(NSString *)searchFileName{
+    
+    NSFileManager * fileManger = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    BOOL isExist = [fileManger fileExistsAtPath:bootPath isDirectory:&isDir];
+    if (isExist) {
+        // 2. 判断是不是目录
+        if (isDir) {
+            NSArray * dirArray = [fileManger contentsOfDirectoryAtPath:bootPath error:nil];
+            NSString * subPath = nil;
+            for (NSString * str in dirArray) {
+                subPath  = [bootPath stringByAppendingPathComponent:str];
+                if([str isEqualToString:searchFileName]){
+                    return subPath;
+                }
+            }
+        }else{
+//            NSLog(@"%@",path);
+        }
+
+    }else{
+//        NSLog(@"你打印的是目录或者不存在");
+    }
+    return @"";
+}
+
 
 - (void)showFiles:(NSString *)path fileType:(NSArray<NSString *> *)fileType isNeedFileName:(BOOL)isNeedFileName{
 
@@ -105,7 +131,7 @@
     }
     
     if(![manager fileExistsAtPath:theFilePath]){
-        NSString *bitPath = [NSString stringWithFormat:@"%@/archiveFile"];
+        NSString *bitPath = [NSString stringWithFormat:@"%@/archiveFile",[self getForPath]];
         NSArray *list = [[FileManager new] searchFiles:bitPath fileType:@[@"o"] isNeedFileName:YES];
         if(list.count != 0){
             NSString *content = [list componentsJoinedByString:@"\n"];

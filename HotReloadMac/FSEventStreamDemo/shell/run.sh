@@ -32,6 +32,7 @@ linkTarget="arm64-apple-ios11.0-simulator"
 # 模拟器
 linkIsysroot="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 
+# QWRLayoutViewTool-fucnmuycddwarxaxtcizhfcysboe
 #objectCahcePath="/Users/dingwei/Library/Developer/Xcode/DerivedData/DWDebugHR-fahgfhvqgkwjbgdxifevhwtdnpmp/Build/Intermediates.noindex/DWDebugHR.build/Debug-iphonesimulator/DWDebugHR.build/DWDebugHR-project-headers.hmap"
 #objectCahcePath="/Users/lanhaiyang/Library/Developer/Xcode/DerivedData/TestHotRoload-edneskslwtlxvtbmwtbmilpdpiwn/Build/Intermediates.noindex/TestHotRoload.build/Debug-iphonesimulator/TestHotRoload.build/TestHotRoload-all-target-headers.hmap"
 
@@ -144,8 +145,9 @@ if [ ${simulator} == "phone" ];then
 ip=$4
 fi
 
-dylibPath='/'${dylibFilePath}'/dw'${ctime}'.dylib'
+dylibPath=${dylibFilePath}'/dw'${ctime}'.dylib'
+echo ${dylibPath}
 curl -H "Expect:" -F "file=@"${dylibPath} http://${ip}:8080/upload
-
+echo "curl -H "Expect:" -F "file=@"${dylibPath} http://${ip}:8080/upload"
 #上传成功后将dylib 删除掉
 rm -r ${dylibPath}

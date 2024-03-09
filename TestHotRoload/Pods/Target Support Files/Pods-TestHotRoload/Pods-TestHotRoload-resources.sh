@@ -98,10 +98,12 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/GCDWebServer/GCDWebUploader/GCDWebUploader.bundle"
+  install_resource "${PODS_ROOT}/../TestHotRoload/Resource/getInfo.plist"
   install_resource "${PODS_ROOT}/../TestHotRoload/Resource/index.html"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/GCDWebServer/GCDWebUploader/GCDWebUploader.bundle"
+  install_resource "${PODS_ROOT}/../TestHotRoload/Resource/getInfo.plist"
   install_resource "${PODS_ROOT}/../TestHotRoload/Resource/index.html"
 fi
 

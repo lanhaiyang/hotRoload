@@ -12,7 +12,7 @@
 -(instancetype)init{
     
     if (self = [super init]) {
-        
+        NSLog(@"12323232s22223");
     }
     return self;
 }

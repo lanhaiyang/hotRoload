@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(void)creatFile;
 
+-(NSString *)getForProfileWithBootPath:(NSString *)bootPath searchFileName:(NSString *)searchFileName;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -31,7 +31,7 @@
     _name.font = [UIFont systemFontOfSize:14];
     _name.textColor = [UIColor whiteColor];
     _name.textAlignment = NSTextAlignmentRight;
-    _name.text = @"啊大姐夫拉断阀";
+    _name.text = @"啊大姐夫拉断阀12322224222224";
     [self addSubview:_name];
     [_name mas_makeConstraints:^(MASConstraintMaker *make) {
        

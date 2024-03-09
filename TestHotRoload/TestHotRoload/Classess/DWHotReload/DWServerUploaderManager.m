@@ -72,12 +72,30 @@ FOUNDATION_STATIC_INLINE void DWSafeThread(dispatch_block_t block) {
 
 #pragma mark - public method
 
+
+-(NSString *)getBuildPath{
+    NSDictionary *infoDictionary=[[NSBundle mainBundle]infoDictionary];
+    NSString *path = infoDictionary[@"BasePath"];
+    path = [path stringByReplacingOccurrencesOfString:@"/Build/Products" withString:@""];
+    return path;
+}
+
 /**
  开启服务
  indexHTML :
  */
 - (void)startServerWithIndexHTML:(NSString *)indexHTML{
     if (self.serverStatusCode == DWServerStatusCode_start) return;
+    NSString *path = [self getBuildPath];
+    if(path.length == 0){
+        printf("\n================================= \n");
+        printf("没有在 info.plish 中找到 \"key is BasePath for Value $(SYMROOT)\"\n");
+        printf("================================= \n\n");
+    }else{
+        printf("\n================================= \n");
+        printf("构建目录: %s\n",path.UTF8String);
+        printf("================================= \n\n");
+    }
     self.indexHTML = indexHTML;
     [self.webUploader startWithPort:8080 bonjourName:nil];
 }

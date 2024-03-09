@@ -132,10 +132,10 @@ void fsevents_callback(ConstFSEventStreamRef streamRef,
         NSArray<NSString *> *list = [self getRegularExpressionWithContent:resultStr Pattern:@"\"(.*?)\""];
         NSMutableDictionary *infoMs = [NSMutableDictionary dictionary];
         for(NSString *content in list){
-            [infoMs setObject:content forKey:content];
+            [infoMs setObject:@"1" forKey:content];
         }
         list = infoMs.allKeys;
-        NSLog(@"list = %@",list);
+//        NSLog(@"list = %@",list);
         self.cerLists = list;
         [self.seletCer removeAllItems];
         self.seletCer.numberOfVisibleItems = self.cerLists.count;
@@ -171,7 +171,84 @@ void fsevents_callback(ConstFSEventStreamRef streamRef,
 -(void)updateSearch{
     NSArray *list = [_file searchFiles:_projectPath fileType:@[@"h"] isNeedFileName:NO];
     NSString *linkPaht = @"";
-    for(NSString *path in list){
+    linkPaht = [self getPodfileContentWithlinkPaht:linkPaht];
+    linkPaht = [self getPathWithListPath:list linkPaht:linkPaht];
+//    for(NSString *path in list){
+//        if([path containsString:@" "]){
+//            continue;
+//        }
+//        NSString *link = [NSString stringWithFormat:@"-I%@",path];
+////        link = [link stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
+//
+//        if(linkPaht.length == 0){
+//            linkPaht = [NSString stringWithFormat:@"%@ ",link];
+//        }else{
+//            linkPaht = [NSString stringWithFormat:@"%@%@ ",linkPaht,link];
+//        }
+////        link = [link stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+////        NSData *data =[link dataUsingEncoding:NSUTF8StringEncoding];
+////        link = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+////        NSURL *url = [NSURL URLWithString:link];
+////        printf("path = %s \n",link.UTF8String);
+//    }
+    _linkPahts = linkPaht;
+    _importPath = [self.file writeToTXTFileWithString:_linkPahts fileName:@"importHead"];
+//    NSLog(@"linkPahts = %@",linkPaht);
+}
+
+
+-(NSString *)getPodfileContentWithlinkPaht:(NSString *)linkPaht{
+    
+    NSString *podfilePath = [_file getForProfileWithBootPath:_projectPath searchFileName:@"Podfile"];
+    NSFileManager* fm = [NSFileManager defaultManager];
+    NSData* data = [fm contentsAtPath:podfilePath];
+    NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSArray<NSString *> *list = [self getRegularExpressionWithContent:content Pattern:@"#(.*)"];
+    for(NSString *listString in list){
+        content = [content stringByReplacingOccurrencesOfString:listString withString:@""];
+    }
+    list = [self getRegularExpressionWithContent:content Pattern:@"(.*)TestHotRoload(.*)"];
+    for(NSString *listString in list){
+        content = [content stringByReplacingOccurrencesOfString:listString withString:@""];
+    }
+    content = [content stringByReplacingOccurrencesOfString:@"TestHotRoload'" withString:@""];
+    list = [self getRegularExpressionWithContent:content Pattern:@":path => '(.*?)'"];
+    NSString *upPath = [_projectPath stringByDeletingLastPathComponent];
+//    NSString *linkPaht = @"";
+    for(NSString *listString in list){
+        NSString *path = [listString stringByReplacingOccurrencesOfString:@"../" withString:@""];
+        path = [NSString stringWithFormat:@"%@/%@",upPath,path];
+        NSArray *list = [_file searchFiles:path fileType:@[@"h"] isNeedFileName:NO];
+        list = [self filterPathWithContent:@[@"/Pods"] listPath:list];
+        linkPaht = [self getPathWithListPath:list linkPaht:linkPaht];
+    }
+    return linkPaht;
+}
+
+
+-(NSArray<NSString *> *)filterPathWithContent:(NSArray<NSString *> *)contents listPath:(NSArray<NSString *> *)listPath{
+    
+    NSMutableArray *listMs = [NSMutableArray array];
+    for(NSString *path in listPath){
+        BOOL isContain = NO;
+        for(NSString *content in contents){
+            if([path containsString:content]){
+                isContain = YES;
+                continue;
+            }
+        }
+        if(isContain == NO){
+            [listMs addObject:path];
+        }
+    }
+    return listMs.copy;
+}
+
+
+-(NSString *)getPathWithListPath:(NSArray<NSString *> *)listPath linkPaht:(NSString *)linkPaht{
+    
+    for(NSString *path in listPath){
         if([path containsString:@" "]){
             continue;
         }
@@ -183,15 +260,8 @@ void fsevents_callback(ConstFSEventStreamRef streamRef,
         }else{
             linkPaht = [NSString stringWithFormat:@"%@%@ ",linkPaht,link];
         }
-//        link = [link stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSData *data =[link dataUsingEncoding:NSUTF8StringEncoding];
-//        link = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//        NSURL *url = [NSURL URLWithString:link];
-//        printf("path = %s \n",link.UTF8String);
     }
-    _linkPahts = linkPaht;
-    _importPath = [self.file writeToTXTFileWithString:_linkPahts fileName:@"importHead"];
-//    NSLog(@"linkPahts = %@",linkPaht);
+    return linkPaht;
 }
 
 

@@ -159,7 +159,7 @@
     }];
     
     TestView *testView = [[TestView alloc] init];
-    testView.backgroundColor = [UIColor greenColor];
+    testView.backgroundColor = [UIColor blueColor];
     [self.view addSubview:testView];
     [testView mas_makeConstraints:^(MASConstraintMaker *make) {
 
